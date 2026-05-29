@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
+             x:Class="WorldCuisineApp.Views.SettingsPage"
+             x:DataType="vm:SettingsViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.Resources>
+        <conv:StringNotEmptyConverter x:Key="StringNotEmpty" />
+    </ContentPage.Resources>
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+
+            <Border Style="{StaticResource CardBorder}" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Accessibility" Style="{StaticResource Headline}" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Dark mode" VerticalOptions="Center" FontSize="{StaticResource BodyFontSize}" />
+                        <Switch Grid.Column="1" IsToggled="{Binding IsDarkMode}" />
+                    </Grid>
+                    <Label Text="{Binding FontScaleLabel}" FontSize="{StaticResource BodyFontSize}" />
+                    <Slider Minimum="0.85"
+                            Maximum="1.5"
+                            Value="{Binding FontScale}"
+                            SemanticProperties.Description="Text size slider" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="MockAPI URL" Style="{StaticResource Headline}" />
+                    <Editor Text="{Binding ApiUrl}"
+                            AutoSize="TextChanges"
+                            MinimumHeightRequest="80"
+                            FontSize="{StaticResource SmallFontSize}" />
+                    <Label Text="Leave placeholder to use local fallback JSON."
+                           FontSize="{StaticResource SmallFontSize}"
+                           TextColor="{StaticResource TextMuted}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Save Settings" Command="{Binding SaveCommand}" Style="{StaticResource PrimaryButton}" />
+            <Button Text="Sign Out" Command="{Binding LogoutCommand}" Style="{StaticResource SecondaryButton}" />
+
+            <Label Text="{Binding StatusMessage}" TextColor="{StaticResource Success}"
+                   IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
+            <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmpty}}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

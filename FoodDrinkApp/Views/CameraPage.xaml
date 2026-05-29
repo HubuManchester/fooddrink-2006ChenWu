@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
+             x:Class="WorldCuisineApp.Views.CameraPage"
+             x:DataType="vm:CameraViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.Resources>
+        <conv:StringNotEmptyConverter x:Key="StringNotEmpty" />
+        <conv:InvertedBoolConverter x:Key="InvertedBool" />
+    </ContentPage.Resources>
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            <Grid ColumnDefinitions="Auto,*">
+                <Button Text="←" Command="{Binding GoBackCommand}" Style="{StaticResource IconButton}" />
+                <Label Grid.Column="1" Text="Capture your dish" Style="{StaticResource Headline}" VerticalOptions="Center" />
+            </Grid>
+
+            <Label Text="Uses device camera hardware. On Windows, pick an image if camera is unavailable."
+                   FontSize="{StaticResource BodyFontSize}"
+                   TextColor="{StaticResource TextMuted}" />
+
+            <Border Style="{StaticResource CardBorder}" Padding="12" HeightRequest="280">
+                <Grid>
+                    <Label Text="No photo yet"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource TextMuted}"
+                           IsVisible="{Binding HasPhoto, Converter={StaticResource InvertedBool}, FallbackValue=True}" />
+                    <Image Source="{Binding Photo}"
+                           Aspect="AspectFit"
+                           IsVisible="{Binding HasPhoto}" />
+                </Grid>
+            </Border>
+
+            <Button Text="Take Photo" Command="{Binding CaptureCommand}" Style="{StaticResource PrimaryButton}" />
+
+            <Label Text="{Binding StatusMessage}" TextColor="{StaticResource Success}"
+                   IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
+            <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmpty}}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

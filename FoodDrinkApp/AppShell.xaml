@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="FoodDrinkApp.AppShell"
+    x:Class="WorldCuisineApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FoodDrinkApp"
-    Title="NutriBite"
-    FlyoutBehavior="Disabled"
-    Shell.BackgroundColor="{AppThemeBinding Light=#FFF4E3, Dark=#120E0B}"
-    Shell.ForegroundColor="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}"
-    Shell.TitleColor="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}"
-    Shell.UnselectedColor="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}"
-    Shell.TabBarBackgroundColor="{AppThemeBinding Light=#FFF4E3, Dark=#120E0B}"
-    Shell.TabBarForegroundColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}"
-    Shell.TabBarTitleColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}"
-    Shell.TabBarUnselectedColor="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}">
+    xmlns:views="clr-namespace:WorldCuisineApp.Views"
+    Title="World Cuisine"
+    Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
+    <ShellContent
+        Route="login"
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}" />
+
+    <TabBar Route="main">
         <ShellContent
-            Title="Foods"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />
+            Route="home"
+            Title="Explore"
+            Icon="dotnet_bot.png"
+            ContentTemplate="{DataTemplate views:HomePage}" />
         <ShellContent
-            Title="Hardware"
-            ContentTemplate="{DataTemplate local:HardwarePage}"
-            Route="HardwarePage" />
+            Route="favorites"
+            Title="Favorites"
+            Icon="dotnet_bot.png"
+            ContentTemplate="{DataTemplate views:FavoritesPage}" />
         <ShellContent
+            Route="settings"
             Title="Settings"
-            ContentTemplate="{DataTemplate local:SettingsPage}"
-            Route="SettingsPage" />
+            Icon="dotnet_bot.png"
+            ContentTemplate="{DataTemplate views:SettingsPage}" />
     </TabBar>
+
 </Shell>

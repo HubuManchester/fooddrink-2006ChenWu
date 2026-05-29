@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             xmlns:models="clr-namespace:WorldCuisineApp.Models"
+             xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
+             xmlns:views="clr-namespace:WorldCuisineApp.Views"
+             x:Class="WorldCuisineApp.Views.HomePage"
+             x:DataType="vm:HomeViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.Resources>
+        <conv:StringNotEmptyConverter x:Key="StringNotEmpty" />
+        <conv:InvertedBoolConverter x:Key="InvertedBool" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" RowSpacing="12">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+            <SearchBar Grid.Column="0"
+                       Placeholder="Search dishes, countries..."
+                       Text="{Binding SearchText}"
+                       SemanticProperties.Description="Search cuisines" />
+            <Button Grid.Column="1"
+                    Text="?"
+                    Command="{Binding OpenHelpCommand}"
+                    Style="{StaticResource IconButton}"
+                    SemanticProperties.Hint="Open help" />
+            <Button Grid.Column="2"
+                    Text="📷"
+                    Command="{Binding OpenCameraCommand}"
+                    Style="{StaticResource IconButton}"
+                    SemanticProperties.Hint="Open camera" />
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="4">
+            <Label Text="{Binding StatusMessage}"
+                   FontSize="{StaticResource BodyFontSize}"
+                   TextColor="{StaticResource TextMuted}"
+                   IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
+            <Label Text="{Binding ErrorMessage}"
+                   FontSize="{StaticResource BodyFontSize}"
+                   TextColor="{StaticResource Error}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmpty}}" />
+            <Label Text="Tip: shake device for a random dish"
+                   FontSize="{StaticResource SmallFontSize}"
+                   TextColor="{StaticResource Accent}" />
+        </VerticalStackLayout>
+
+        <RefreshView Grid.Row="2" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Cuisines}"
+                            SelectionMode="None"
+                            SemanticProperties.Description="Cuisine list">
+                <CollectionView.EmptyView>
+                    <Label Text="No dishes found. Pull to refresh."
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource TextMuted}" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CuisineItem">
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,10" Padding="12">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type views:HomePage}}, Path=BindingContext.CuisineTappedCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="72,*" ColumnSpacing="12">
+                                <Image Grid.Column="0"
+                                       Source="{Binding ImageUrl}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="72"
+                                       WidthRequest="72">
+                                    <Image.Clip>
+                                        <RoundRectangleGeometry CornerRadius="8" Rect="0,0,72,72" />
+                                    </Image.Clip>
+                                </Image>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold"
+                                           FontSize="{StaticResource TitleFontSize}" />
+                                    <Label Text="{Binding Country}"
+                                           FontSize="{StaticResource BodyFontSize}"
+                                           TextColor="{StaticResource TextMuted}" />
+                                    <Label Text="{Binding Region}"
+                                           FontSize="{StaticResource SmallFontSize}"
+                                           TextColor="{StaticResource Accent}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator Grid.Row="3" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    </Grid>
+</ContentPage>

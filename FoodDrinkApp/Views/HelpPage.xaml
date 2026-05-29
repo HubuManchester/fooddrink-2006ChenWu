@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             x:Class="WorldCuisineApp.Views.HelpPage"
+             x:DataType="vm:HelpViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="12">
+            <Grid ColumnDefinitions="Auto,*">
+                <Button Text="←"
+                        Clicked="OnBackClicked"
+                        Style="{StaticResource IconButton}" />
+                <Label Grid.Column="1"
+                       Text="Help &amp; Demo Guide"
+                       Style="{StaticResource Headline}"
+                       VerticalOptions="Center" />
+            </Grid>
+            <Border Style="{StaticResource CardBorder}" Padding="16">
+                <Label Text="{Binding HelpText}"
+                       FontSize="{StaticResource BodyFontSize}"
+                       LineBreakMode="WordWrap" />
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

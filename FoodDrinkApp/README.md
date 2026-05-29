@@ -1,58 +1,68 @@
-# 食光营养助手
+# World Cuisine Explorer (.NET MAUI)
 
-食光营养助手是一个基于 .NET MAUI 的“食品与饮品”课程项目应用。应用可以记录食品和饮品，展示营养摘要，验证用户输入，并演示移动设备硬件功能。
+第一版：世界美食信息应用，适用于作业演示与视频录制。
 
-## 主要功能
+## 运行
 
-- 食品和饮品列表，支持搜索和详情页。
-- 添加记录表单，检查必填项和营养数值。
-- 使用相机拍摄食品照片并预览。
-- 使用定位记录用餐或购买地点。
-- 使用文字转语音朗读营养摘要和帮助内容。
-- 使用震动与触觉反馈提供操作提醒。
-- 支持主题切换和大字体模式。
-- 包含语义标签、屏幕阅读器播报和清晰的验证提示。
+> **注意**：必须在 `WorldCuisineApp` 目录内构建，或打开上级目录的 `WorldCuisine.sln`。  
+> 不要在 `E:\STandQA\1` 使用已删除的 `1.csproj` 构建。
 
-## 评分点覆盖
+### 环境
 
-- UI/UX 与无障碍：XAML 页面、底部导航、一致的视觉风格、深色模式、语义描述和屏幕阅读器播报。
-- 移动硬件：相机、定位、文字转语音、震动和触觉反馈。
-- 功能完整性：列表、搜索、添加、详情、设置和硬件演示流程。
-- 验证与错误处理：必填项检查、数字检查、权限错误和硬件不可用提示。
-- 代码质量：模型和服务分离、命名清晰、可复用的目录服务，以及范围清晰的页面代码。
-- 部署：面向 Android 和 Windows 的 .NET MAUI 跨平台应用。
-- GitHub 使用：建议持续提交，例如 `添加食品列表`、`实现硬件页面`、`添加输入验证`。
+- .NET 9 SDK + MAUI workload
+- Visual Studio 2022（含「使用 .NET 的移动开发」工作负载）或 `dotnet workload install maui`
 
-## 运行方式
-
-使用安装了 .NET MAUI 工作负载的 Visual Studio 2022 打开 `FoodDrinkApp.csproj` 或 `FoodDrinkApp.sln`。
-
-推荐演示目标：
-
-- Android 模拟器
-- Windows Machine
-
-Windows 构建命令：
+### Windows
 
 ```powershell
-dotnet build .\FoodDrinkApp.csproj -f net9.0-windows10.0.19041.0
+cd WorldCuisineApp
+dotnet build -f net9.0-windows10.0.19041.0
+dotnet run -f net9.0-windows10.0.19041.0
 ```
 
-Android 构建命令：
+或在 Visual Studio 中选择 **Windows Machine** 后 F5。
+
+### Android
+
+连接设备或模拟器后：
 
 ```powershell
-dotnet build .\FoodDrinkApp.csproj -f net9.0-android
+dotnet build -f net9.0-android
+dotnet build -t:Run -f net9.0-android
 ```
 
-本项目通过 `Directory.Build.props` 将构建输出放到 `C:\MauiBuild\NutriTrack\`，用于规避 Android 打包工具在中文路径下的 `assets` 路径问题。
+## MockAPI（可选）
 
-## 录屏演示清单
+1. 在 [mockapi.io](https://mockapi.io) 创建项目，添加资源 **`cuisines`**。
+2. 字段示例：`id`, `name`, `country`, `region`, `description`, `imageUrl`, `spiceLevel`, `funFact`（与 `Models/CuisineItem.cs` 一致）。
+3. 在应用 **Settings** 中粘贴完整 URL，例如：  
+   `https://xxxxxxxx.mockapi.io/cuisines`
+4. 未配置或网络失败时，自动使用 `Resources/Raw/cuisines_fallback.json`。
 
-- 说明“食品与饮品”主题和“食光营养助手”的应用概念。
-- 展示搜索、详情页和添加新记录。
-- 演示不填必填项、输入非法数字时的验证提示。
-- 演示相机、定位、文字转语音、震动和触觉反馈。
-- 展示深色模式和大字体模式。
-- 展示关键代码文件：模型、服务、页面和 Android 权限配置。
-- 展示 Android 和 Windows 部署效果。
-- 展示 GitHub 提交历史和 README。
+## 演示得分点（录制建议）
+
+| 标准 | 演示位置 |
+|------|----------|
+| 登录验证 | Login：留空、错误邮箱、短密码 |
+| 错误处理 | 任意页状态栏红色错误信息；API 断网仍显示本地数据 |
+| 暗色 / 字号 | Settings → Dark mode、Text size 滑块 → Save |
+| 摇晃 | Home 页摇动设备 → 随机菜品 + 震动 |
+| 震动 | 详情页 ♥ 收藏 |
+| TTS | 详情页 **Read** |
+| 摄像头 | Home **?** 旁 📷 或详情 📷 |
+| 帮助导航 | Home **?** → Help，**←** 返回 |
+| 数据来源 | Home 底部状态：`Local fallback` 或 `MockAPI` |
+
+## Git 提交建议（三次）
+
+1. **v1（当前）**：项目骨架、登录、首页列表、本地 JSON 兜底  
+2. **v2**：MockAPI、收藏、详情、硬件功能完善  
+3. **v3**：UI 打磨、README、部署截图与最终修复  
+
+## 项目结构
+
+- `Models/` — 数据模型  
+- `Services/` — API、设置、收藏、硬件封装  
+- `ViewModels/` — MVVM 视图模型  
+- `Views/` — XAML 页面  
+- `Constants/` — API 与偏好键  

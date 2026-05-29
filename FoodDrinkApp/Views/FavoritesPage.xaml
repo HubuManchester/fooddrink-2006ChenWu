@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             xmlns:models="clr-namespace:WorldCuisineApp.Models"
+             xmlns:views="clr-namespace:WorldCuisineApp.Views"
+             xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
+             x:Class="WorldCuisineApp.Views.FavoritesPage"
+             x:DataType="vm:FavoritesViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.Resources>
+        <conv:StringNotEmptyConverter x:Key="StringNotEmpty" />
+    </ContentPage.Resources>
+
+    <Grid Padding="16" RowDefinitions="Auto,*">
+        <Label Grid.Row="0"
+               Text="{Binding StatusMessage}"
+               TextColor="{StaticResource TextMuted}"
+               IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
+
+        <RefreshView Grid.Row="1" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Items}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CuisineItem">
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,8" Padding="12">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type views:FavoritesPage}}, Path=BindingContext.OpenItemCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="{StaticResource TitleFontSize}" />
+                                <Label Text="{Binding Country}" FontSize="{StaticResource BodyFontSize}" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

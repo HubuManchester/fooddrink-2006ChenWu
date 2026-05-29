@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
+             x:Class="WorldCuisineApp.Views.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.Resources>
+        <conv:StringNotEmptyConverter x:Key="StringNotEmpty" />
+        <conv:InvertedBoolConverter x:Key="InvertedBool" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center">
+
+            <Label Text="🍽️" FontSize="48" HorizontalOptions="Center" />
+            <Label Text="World Cuisine Explorer"
+                   Style="{StaticResource Headline}"
+                   HorizontalTextAlignment="Center" />
+            <Label Text="Sign in to explore global dishes"
+                   Style="{StaticResource SubHeadline}"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource TextMuted}" />
+
+            <Border Style="{StaticResource CardBorder}" Padding="20">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Display name" Style="{StaticResource FieldLabel}" />
+                    <Entry Text="{Binding Username}"
+                           Placeholder="e.g. Alex"
+                           ReturnType="Next"
+                           SemanticProperties.Description="Display name" />
+
+                    <Label Text="Email" Style="{StaticResource FieldLabel}" />
+                    <Entry Text="{Binding Email}"
+                           Placeholder="you@example.com"
+                           Keyboard="Email"
+                           ReturnType="Next"
+                           SemanticProperties.Description="Email address" />
+
+                    <Label Text="Password" Style="{StaticResource FieldLabel}" />
+                    <Entry Text="{Binding Password}"
+                           Placeholder="Min. 6 characters"
+                           IsPassword="True"
+                           ReturnType="Done"
+                           SemanticProperties.Description="Password" />
+
+                    <Label Text="{Binding ErrorMessage}"
+                           TextColor="{StaticResource Error}"
+                           IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmpty}}"
+                           LineBreakMode="WordWrap" />
+
+                    <Label Text="{Binding StatusMessage}"
+                           TextColor="{StaticResource Success}"
+                           IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
+
+                    <Button Text="Sign In"
+                            Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBool}}"
+                            Style="{StaticResource PrimaryButton}" />
+
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Demo: leave fields empty or use short password to show validation."
+                   FontSize="{StaticResource BodyFontSize}"
+                   TextColor="{StaticResource TextMuted}"
+                   HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

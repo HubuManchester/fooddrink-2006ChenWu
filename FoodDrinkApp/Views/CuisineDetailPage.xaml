@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
+             xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
+             x:Class="WorldCuisineApp.Views.CuisineDetailPage"
+             x:DataType="vm:CuisineDetailViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.Resources>
+        <conv:StringNotEmptyConverter x:Key="StringNotEmpty" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12" IsVisible="{Binding HasCuisine}">
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                <Button Text="←"
+                        Command="{Binding GoBackCommand}"
+                        Style="{StaticResource IconButton}"
+                        SemanticProperties.Hint="Go back" />
+                <Label Grid.Column="1"
+                       Text="{Binding Cuisine.Name}"
+                       Style="{StaticResource Headline}"
+                       VerticalOptions="Center" />
+            </Grid>
+
+            <Image Source="{Binding Cuisine.ImageUrl}"
+                   Aspect="AspectFill"
+                   HeightRequest="220">
+                <Image.Clip>
+                    <RoundRectangleGeometry CornerRadius="12" Rect="0,0,400,220" />
+                </Image.Clip>
+            </Image>
+
+            <Label Text="{Binding Cuisine.Country, StringFormat='{0}'}"
+                   FontSize="{StaticResource TitleFontSize}"
+                   TextColor="{StaticResource Accent}" />
+            <Label Text="{Binding Cuisine.Region}"
+                   FontSize="{StaticResource BodyFontSize}"
+                   TextColor="{StaticResource TextMuted}" />
+            <Label Text="{Binding SpiceStars}"
+                   FontSize="{StaticResource BodyFontSize}" />
+
+            <Label Text="{Binding Cuisine.Description}"
+                   FontSize="{StaticResource BodyFontSize}"
+                   LineBreakMode="WordWrap" />
+
+            <Border Style="{StaticResource CardBorder}" Padding="12">
+                <Label Text="{Binding Cuisine.FunFact, StringFormat='💡 {0}'}"
+                       FontSize="{StaticResource BodyFontSize}"
+                       LineBreakMode="WordWrap" />
+            </Border>
+
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                <Button Text="♡ Favorite"
+                        Command="{Binding ToggleFavoriteCommand}"
+                        Style="{StaticResource SecondaryButton}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsFavorite}" Value="True">
+                            <Setter Property="Text" Value="♥ Saved" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsFavorite}" Value="False">
+                            <Setter Property="Text" Value="♡ Favorite" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Grid.Column="1"
+                        Text="🔊 Read"
+                        Command="{Binding SpeakCommand}"
+                        Style="{StaticResource PrimaryButton}" />
+                <Button Grid.Column="2"
+                        Text="📷"
+                        Clicked="OnOpenCameraClicked"
+                        Style="{StaticResource IconButton}" />
+            </Grid>
+
+            <Label Text="{Binding StatusMessage}"
+                   TextColor="{StaticResource Success}"
+                   IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="{StaticResource Error}"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmpty}}" />
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

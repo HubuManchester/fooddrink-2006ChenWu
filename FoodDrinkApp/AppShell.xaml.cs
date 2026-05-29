@@ -1,11 +1,32 @@
-﻿namespace FoodDrinkApp;
+﻿using WorldCuisineApp.Services;
+using WorldCuisineApp.Views;
+
+namespace WorldCuisineApp;
 
 public partial class AppShell : Shell
 {
-	public AppShell()
-	{
-		InitializeComponent();
-		Routing.RegisterRoute(nameof(AddItemPage), typeof(AddItemPage));
-		Routing.RegisterRoute(nameof(FoodDetailPage), typeof(FoodDetailPage));
-	}
+    private readonly ISettingsService _settings;
+
+    public AppShell(ISettingsService settings)
+    {
+        _settings = settings;
+        InitializeComponent();
+
+        Routing.RegisterRoute(nameof(CuisineDetailPage), typeof(CuisineDetailPage));
+        Routing.RegisterRoute(nameof(HelpPage), typeof(HelpPage));
+        Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
+
+        Loaded += OnShellLoaded;
+    }
+
+    private async void OnShellLoaded(object? sender, EventArgs e)
+    {
+        Loaded -= OnShellLoaded;
+        _settings.ApplyThemeAndFont();
+
+        if (_settings.IsLoggedIn)
+            await GoToAsync("//home");
+        else
+            await GoToAsync("//login");
+    }
 }
