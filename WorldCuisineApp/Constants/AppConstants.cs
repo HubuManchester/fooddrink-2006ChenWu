@@ -9,7 +9,7 @@ public static class AppConstants
     /// Default MockAPI endpoint. Create a resource named "cuisines" on mockapi.io and paste your URL here,
     /// or set it at runtime in Settings (stored in Preferences).
     /// </summary>
-    public const string DefaultApiUrl = "https://YOUR_PROJECT_ID.mockapi.io/cuisines";
+    public const string DefaultApiUrl = "https://6a1a6614bc2f944754922936.mockapi.io/cuisines";
 
     public const string PrefApiUrl = "api_url";
     public const string PrefLoggedIn = "is_logged_in";

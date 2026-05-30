@@ -1,6 +1,6 @@
 # World Cuisine Explorer (.NET MAUI)
 
-第一版：世界美食信息应用，适用于作业演示与视频录制。
+世界美食信息应用，适用于作业演示与视频录制。
 
 ## 运行
 
@@ -30,7 +30,7 @@ dotnet build -f net9.0-android
 dotnet build -t:Run -f net9.0-android
 ```
 
-## MockAPI（可选）
+## MockAPI
 
 1. 在 [mockapi.io](https://mockapi.io) 创建项目，添加资源 **`cuisines`**。
 2. 字段示例：`id`, `name`, `country`, `region`, `description`, `imageUrl`, `spiceLevel`, `funFact`（与 `Models/CuisineItem.cs` 一致）。
@@ -38,7 +38,7 @@ dotnet build -t:Run -f net9.0-android
    `https://xxxxxxxx.mockapi.io/cuisines`
 4. 未配置或网络失败时，自动使用 `Resources/Raw/cuisines_fallback.json`。
 
-## 演示得分点（录制建议）
+## 演示得分点
 
 | 标准 | 演示位置 |
 |------|----------|
@@ -52,9 +52,9 @@ dotnet build -t:Run -f net9.0-android
 | 帮助导航 | Home **?** → Help，**←** 返回 |
 | 数据来源 | Home 底部状态：`Local fallback` 或 `MockAPI` |
 
-## Git 提交建议（三次）
+## Git 提交建议
 
-1. **v1（当前）**：项目骨架、登录、首页列表、本地 JSON 兜底  
+1. **v1**：项目骨架、登录、首页列表、本地 JSON 兜底  
 2. **v2**：MockAPI、收藏、详情、硬件功能完善  
 3. **v3**：UI 打磨、README、部署截图与最终修复  
 
