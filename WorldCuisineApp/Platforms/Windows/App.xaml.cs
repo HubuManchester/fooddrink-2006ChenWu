@@ -1,15 +1,11 @@
-﻿namespace WorldCuisineApp;
+namespace WorldCuisineApp.WinUI;
 
-public partial class App : Application
+public partial class App : MauiWinUIApplication
 {
-    private readonly AppShell _shell;
-
-    public App(AppShell shell)
+    public App()
     {
-        _shell = shell;
-        InitializeComponent();
+        this.InitializeComponent();
     }
 
-    protected override Window CreateWindow(IActivationState? activationState) =>
-        new Window(_shell);
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
