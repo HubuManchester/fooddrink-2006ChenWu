@@ -71,21 +71,21 @@ public class HardwareService : IHardwareService, IDisposable
 
     public async Task<FileResult?> CapturePhotoAsync()
     {
-        try
-        {
-            if (!MediaPicker.Default.IsCaptureSupported)
-                return null;
+        if (!MediaPicker.Default.IsCaptureSupported)
+            throw new InvalidOperationException("Camera is not supported on this device.");
 
-            return await MediaPicker.Default.CapturePhotoAsync(new MediaPickerOptions
-            {
-                Title = "Capture your dish"
-            });
-        }
-        catch (Exception ex)
+        return await MediaPicker.Default.CapturePhotoAsync(new MediaPickerOptions
         {
-            System.Diagnostics.Debug.WriteLine($"Camera failed: {ex.Message}");
-            return null;
-        }
+            Title = "Capture your dish"
+        });
+    }
+
+    public async Task<FileResult?> PickPhotoAsync()
+    {
+        return await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions
+        {
+            Title = "Choose a food photo"
+        });
     }
 
     public void StartShakeDetection(Action onShake)

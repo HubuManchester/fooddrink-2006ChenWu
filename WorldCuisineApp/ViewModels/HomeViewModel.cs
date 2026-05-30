@@ -21,6 +21,7 @@ public class HomeViewModel : BaseViewModel
         RefreshCommand = new Command(async () => await LoadAsync());
         OpenHelpCommand = new Command(async () => await Shell.Current.GoToAsync(nameof(Views.HelpPage)));
         OpenCameraCommand = new Command(async () => await Shell.Current.GoToAsync(nameof(Views.CameraPage)));
+        RandomDishCommand = new Command(async () => await OnShakeAsync());
         CuisineTappedCommand = new Command<CuisineItem>(async item =>
         {
             if (item is null) return;
@@ -43,12 +44,11 @@ public class HomeViewModel : BaseViewModel
     public ICommand RefreshCommand { get; }
     public ICommand OpenHelpCommand { get; }
     public ICommand OpenCameraCommand { get; }
+    public ICommand RandomDishCommand { get; }
     public ICommand CuisineTappedCommand { get; }
 
     public async Task LoadAsync()
     {
-        if (IsBusy) return;
-
         try
         {
             IsBusy = true;

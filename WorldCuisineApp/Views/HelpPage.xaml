@@ -20,7 +20,7 @@
             </Grid>
             <Border Style="{StaticResource CardBorder}" Padding="16">
                 <Label Text="{Binding HelpText}"
-                       FontSize="{StaticResource BodyFontSize}"
+                       FontSize="{DynamicResource BodyFontSize}"
                        LineBreakMode="WordWrap" />
             </Border>
         </VerticalStackLayout>

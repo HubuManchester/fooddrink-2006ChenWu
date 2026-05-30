@@ -17,7 +17,7 @@
 
     <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="16" RowSpacing="12">
 
-        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="8">
             <SearchBar Grid.Column="0"
                        Placeholder="Search dishes, countries..."
                        Text="{Binding SearchText}"
@@ -28,6 +28,11 @@
                     Style="{StaticResource IconButton}"
                     SemanticProperties.Hint="Open help" />
             <Button Grid.Column="2"
+                    Text="🎲"
+                    Command="{Binding RandomDishCommand}"
+                    Style="{StaticResource IconButton}"
+                    SemanticProperties.Hint="Random dish" />
+            <Button Grid.Column="3"
                     Text="📷"
                     Command="{Binding OpenCameraCommand}"
                     Style="{StaticResource IconButton}"
@@ -36,15 +41,15 @@
 
         <VerticalStackLayout Grid.Row="1" Spacing="4">
             <Label Text="{Binding StatusMessage}"
-                   FontSize="{StaticResource BodyFontSize}"
+                   FontSize="{DynamicResource BodyFontSize}"
                    TextColor="{StaticResource TextMuted}"
                    IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
             <Label Text="{Binding ErrorMessage}"
-                   FontSize="{StaticResource BodyFontSize}"
+                   FontSize="{DynamicResource BodyFontSize}"
                    TextColor="{StaticResource Error}"
                    IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmpty}}" />
             <Label Text="Tip: shake device for a random dish"
-                   FontSize="{StaticResource SmallFontSize}"
+                   FontSize="{DynamicResource SmallFontSize}"
                    TextColor="{StaticResource Accent}" />
         </VerticalStackLayout>
 
@@ -69,12 +74,12 @@
                             <VerticalStackLayout Spacing="2">
                                 <Label Text="{Binding Name}"
                                        FontAttributes="Bold"
-                                       FontSize="{StaticResource TitleFontSize}" />
+                                       FontSize="{DynamicResource TitleFontSize}" />
                                 <Label Text="{Binding Country}"
-                                       FontSize="{StaticResource BodyFontSize}"
+                                       FontSize="{DynamicResource BodyFontSize}"
                                        TextColor="{StaticResource TextMuted}" />
                                 <Label Text="{Binding Region}"
-                                       FontSize="{StaticResource SmallFontSize}"
+                                       FontSize="{DynamicResource SmallFontSize}"
                                        TextColor="{StaticResource Accent}" />
                             </VerticalStackLayout>
                         </Border>

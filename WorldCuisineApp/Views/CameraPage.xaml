@@ -20,10 +20,6 @@
                 <Label Grid.Column="1" Text="Capture your dish" Style="{StaticResource Headline}" VerticalOptions="Center" />
             </Grid>
 
-            <Label Text="Uses device camera hardware. On Windows, pick an image if camera is unavailable."
-                   FontSize="{StaticResource BodyFontSize}"
-                   TextColor="{StaticResource TextMuted}" />
-
             <Border Style="{StaticResource CardBorder}" Padding="12" HeightRequest="280">
                 <Grid>
                     <Label Text="No photo yet"
@@ -37,7 +33,10 @@
                 </Grid>
             </Border>
 
-            <Button Text="Take Photo" Command="{Binding CaptureCommand}" Style="{StaticResource PrimaryButton}" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Grid.Column="0" Text="📷 Take Photo" Command="{Binding CaptureCommand}" Style="{StaticResource PrimaryButton}" />
+                <Button Grid.Column="1" Text="🖼️ Gallery" Command="{Binding PickCommand}" Style="{StaticResource SecondaryButton}" />
+            </Grid>
 
             <Label Text="{Binding StatusMessage}" TextColor="{StaticResource Success}"
                    IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />

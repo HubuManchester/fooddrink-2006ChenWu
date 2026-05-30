@@ -27,21 +27,21 @@
             </Grid>
 
             <Label Text="{Binding Cuisine.Country, StringFormat='{0}'}"
-                   FontSize="{StaticResource TitleFontSize}"
+                   FontSize="{DynamicResource TitleFontSize}"
                    TextColor="{StaticResource Accent}" />
             <Label Text="{Binding Cuisine.Region}"
-                   FontSize="{StaticResource BodyFontSize}"
+                   FontSize="{DynamicResource BodyFontSize}"
                    TextColor="{StaticResource TextMuted}" />
             <Label Text="{Binding SpiceStars}"
-                   FontSize="{StaticResource BodyFontSize}" />
+                   FontSize="{DynamicResource BodyFontSize}" />
 
             <Label Text="{Binding Cuisine.Description}"
-                   FontSize="{StaticResource BodyFontSize}"
+                   FontSize="{DynamicResource BodyFontSize}"
                    LineBreakMode="WordWrap" />
 
             <Border Style="{StaticResource CardBorder}" Padding="12">
                 <Label Text="{Binding Cuisine.FunFact, StringFormat='💡 {0}'}"
-                       FontSize="{StaticResource BodyFontSize}"
+                       FontSize="{DynamicResource BodyFontSize}"
                        LineBreakMode="WordWrap" />
             </Border>
 

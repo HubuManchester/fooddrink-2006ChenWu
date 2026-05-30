@@ -14,6 +14,7 @@ public class CameraViewModel : BaseViewModel
         _hardware = hardware;
         Title = "Food Camera";
         CaptureCommand = new Command(async () => await CaptureAsync());
+        PickCommand = new Command(async () => await PickAsync());
         GoBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
     }
 
@@ -36,30 +37,49 @@ public class CameraViewModel : BaseViewModel
     }
 
     public ICommand CaptureCommand { get; }
+    public ICommand PickCommand { get; }
     public ICommand GoBackCommand { get; }
 
     private async Task CaptureAsync()
     {
+        await LoadPhotoAsync(() => _hardware.CapturePhotoAsync());
+    }
+
+    private async Task PickAsync()
+    {
+        await LoadPhotoAsync(() => _hardware.PickPhotoAsync());
+    }
+
+    private async Task LoadPhotoAsync(Func<Task<FileResult?>> getFile)
+    {
         try
         {
             ClearMessages();
-            var file = await _hardware.CapturePhotoAsync();
+            IsBusy = true;
+            var file = await getFile();
             if (file is null)
+                return; // User cancelled, no error
+
+            var localPath = Path.Combine(FileSystem.CacheDirectory, $"{Guid.NewGuid():N}.jpg");
+            using (var sourceStream = await file.OpenReadAsync())
+            using (var destStream = File.OpenWrite(localPath))
             {
-                ErrorMessage = "Camera unavailable or capture was cancelled.";
-                _hardware.VibrateError();
-                return;
+                await sourceStream.CopyToAsync(destStream);
             }
 
-            PhotoPath = file.FullPath;
-            Photo = ImageSource.FromFile(file.FullPath);
+            PhotoPath = localPath;
+            Photo = ImageSource.FromFile(localPath);
             _hardware.VibrateSuccess();
-            StatusMessage = "Photo captured! Use this for your food diary demo.";
+            StatusMessage = "Photo loaded!";
         }
         catch (Exception ex)
         {
-            ErrorMessage = $"Camera error: {ex.Message}";
+            ErrorMessage = $"Error: {ex.Message}";
             _hardware.VibrateError();
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 }

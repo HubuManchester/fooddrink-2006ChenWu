@@ -76,10 +76,10 @@
                     Command="{Binding GoToLoginCommand}"
                     BackgroundColor="Transparent"
                     TextColor="{StaticResource Accent}"
-                    FontSize="{StaticResource BodyFontSize}" />
+                    FontSize="{DynamicResource BodyFontSize}" />
 
             <Label Text="Data is saved to MockAPI when online, or locally when offline."
-                   FontSize="{StaticResource SmallFontSize}"
+                   FontSize="{DynamicResource SmallFontSize}"
                    TextColor="{StaticResource TextMuted}"
                    HorizontalTextAlignment="Center" />
         </VerticalStackLayout>

@@ -69,10 +69,10 @@
                     Command="{Binding GoToRegisterCommand}"
                     BackgroundColor="Transparent"
                     TextColor="{StaticResource Accent}"
-                    FontSize="{StaticResource BodyFontSize}" />
+                    FontSize="{DynamicResource BodyFontSize}" />
 
             <Label Text="Demo: leave fields empty or use short password to show validation."
-                   FontSize="{StaticResource BodyFontSize}"
+                   FontSize="{DynamicResource BodyFontSize}"
                    TextColor="{StaticResource TextMuted}"
                    HorizontalTextAlignment="Center" />
         </VerticalStackLayout>

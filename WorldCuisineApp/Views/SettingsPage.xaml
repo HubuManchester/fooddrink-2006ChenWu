@@ -19,10 +19,10 @@
                 <VerticalStackLayout Spacing="12">
                     <Label Text="Accessibility" Style="{StaticResource Headline}" />
                     <Grid ColumnDefinitions="*,Auto">
-                        <Label Text="Dark mode" VerticalOptions="Center" FontSize="{StaticResource BodyFontSize}" />
+                        <Label Text="Dark mode" VerticalOptions="Center" FontSize="{DynamicResource BodyFontSize}" />
                         <Switch Grid.Column="1" IsToggled="{Binding IsDarkMode}" />
                     </Grid>
-                    <Label Text="{Binding FontScaleLabel}" FontSize="{StaticResource BodyFontSize}" />
+                    <Label Text="{Binding FontScaleLabel}" FontSize="{DynamicResource BodyFontSize}" />
                     <Slider Minimum="0.85"
                             Maximum="1.5"
                             Value="{Binding FontScale}"
@@ -36,9 +36,9 @@
                     <Editor Text="{Binding ApiUrl}"
                             AutoSize="TextChanges"
                             MinimumHeightRequest="80"
-                            FontSize="{StaticResource SmallFontSize}" />
+                            FontSize="{DynamicResource SmallFontSize}" />
                     <Label Text="Leave placeholder to use local fallback JSON."
-                           FontSize="{StaticResource SmallFontSize}"
+                           FontSize="{DynamicResource SmallFontSize}"
                            TextColor="{StaticResource TextMuted}" />
                 </VerticalStackLayout>
             </Border>

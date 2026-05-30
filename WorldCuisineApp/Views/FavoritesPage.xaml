@@ -31,8 +31,8 @@
                                     CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
                             <VerticalStackLayout>
-                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="{StaticResource TitleFontSize}" />
-                                <Label Text="{Binding Country}" FontSize="{StaticResource BodyFontSize}" TextColor="{StaticResource TextMuted}" />
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="{DynamicResource TitleFontSize}" />
+                                <Label Text="{Binding Country}" FontSize="{DynamicResource BodyFontSize}" TextColor="{StaticResource TextMuted}" />
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>

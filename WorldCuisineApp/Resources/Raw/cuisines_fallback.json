@@ -1,6 +1,6 @@
 [
   {
-    "id": "cuisine-1",
+    "id": "fd-1",
     "name": "Margherita Pizza",
     "country": "Italy",
     "region": "Europe",
@@ -10,77 +10,67 @@
     "funFact": "Named after Queen Margherita of Savoy who visited Naples in 1889."
   },
   {
-    "id": "cuisine-2",
+    "id": "fd-2",
     "name": "Pad Thai",
     "country": "Thailand",
     "region": "Asia",
     "description": "Stir-fried rice noodles with shrimp, tofu, eggs, bean sprouts, and tamarind sauce, topped with crushed peanuts and lime.",
     "imageUrl": "https://picsum.photos/seed/padthai/400/300",
     "spiceLevel": 2,
-    "funFact": "Pad Thai was promoted as a national dish during WWII when rice was scarce and noodles were encouraged."
+    "funFact": "Pad Thai was promoted as a national dish during WWII when rice was scarce."
   },
   {
-    "id": "cuisine-3",
+    "id": "fd-3",
     "name": "Tacos al Pastor",
     "country": "Mexico",
     "region": "Latin America",
     "description": "Marinated pork cooked on a vertical spit, served on corn tortillas with pineapple, onion, cilantro, and salsa.",
-    "imageUrl": "https://picsum.photos/seed/tacos/400/300",
+    "imageUrl": "https://picsum.photos/seed/tacosalpastor/400/300",
     "spiceLevel": 3,
-    "funFact": "Al Pastor was introduced by Lebanese immigrants to Mexico in the early 1900s, inspired by shawarma."
+    "funFact": "Brought to Mexico by Lebanese immigrants in the early 1900s, inspired by shawarma."
   },
   {
-    "id": "cuisine-4",
+    "id": "fd-4",
     "name": "Sushi",
     "country": "Japan",
     "region": "Asia",
     "description": "Vinegared rice paired with fresh raw fish, seafood, and vegetables, often wrapped in nori seaweed.",
     "imageUrl": "https://picsum.photos/seed/sushi/400/300",
     "spiceLevel": 2,
-    "funFact": "Sushi originally began as a method of preserving fish in fermented rice during the 2nd century."
+    "funFact": "Sushi originated as a method of preserving fish in fermented rice in the 2nd century."
   },
   {
-    "id": "cuisine-5",
+    "id": "fd-5",
     "name": "Butter Chicken",
     "country": "India",
     "region": "Asia",
     "description": "Tender chicken pieces in a rich, creamy tomato-based curry with butter, cream, and aromatic spices.",
     "imageUrl": "https://picsum.photos/seed/butterchicken/400/300",
     "spiceLevel": 3,
-    "funFact": "Butter chicken was invented by accident at Moti Mahal restaurant in Delhi in the 1950s."
+    "funFact": "Invented by accident at Moti Mahal restaurant in Delhi in the 1950s."
   },
   {
-    "id": "cuisine-6",
-    "name": "Croissant",
-    "country": "France",
-    "region": "Europe",
-    "description": "A buttery, flaky, crescent-shaped pastry made from laminated yeast-leavened dough.",
-    "imageUrl": "https://picsum.photos/seed/croissant/400/300",
-    "spiceLevel": 0,
-    "funFact": "The croissant actually originated from the Austrian kipferl and was brought to France by Marie Antoinette."
-  },
-  {
-    "id": "cuisine-7",
-    "name": "Paella",
-    "country": "Spain",
-    "region": "Europe",
-    "description": "Saffron-infused rice dish with seafood, chicken, rabbit, green beans, and bell peppers, cooked in a wide shallow pan.",
-    "imageUrl": "https://picsum.photos/seed/paella/400/300",
-    "spiceLevel": 1,
-    "funFact": "Authentic paella is traditionally cooked over an open fire with orange and pine branches for smoky flavor."
-  },
-  {
-    "id": "cuisine-8",
+    "id": "fd-6",
     "name": "Peking Duck",
     "country": "China",
     "region": "Asia",
     "description": "Roasted duck with crispy skin, served with thin pancakes, spring onions, cucumber, and sweet hoisin sauce.",
     "imageUrl": "https://picsum.photos/seed/pekingduck/400/300",
     "spiceLevel": 1,
-    "funFact": "Peking duck has been a royal dish since the Yuan Dynasty (1271-1368)."
+    "funFact": "A royal dish since the Yuan Dynasty (1271–1368), with over 600 years of history."
   },
   {
-    "id": "cuisine-9",
+    "id": "fd-7",
+    "name": "Paella",
+    "country": "Spain",
+    "region": "Europe",
+    "description": "Saffron-infused rice dish with seafood, chicken, rabbit, green beans, and bell peppers, cooked in a wide shallow pan.",
+    "imageUrl": "https://picsum.photos/seed/paella/400/300",
+    "spiceLevel": 1,
+    "funFact": "Authentic paella is traditionally cooked over an open fire with orange branches for smoky flavor."
+  },
+  {
+    "id": "fd-8",
     "name": "Shawarma",
     "country": "Lebanon",
     "region": "Middle East",
@@ -90,33 +80,63 @@
     "funFact": "The word 'shawarma' comes from the Turkish word 'çevirme', meaning 'turning'."
   },
   {
-    "id": "cuisine-10",
+    "id": "fd-9",
     "name": "Bibimbap",
     "country": "South Korea",
     "region": "Asia",
-    "description": "A bowl of warm rice topped with sautéed vegetables, gochujang chili paste, soy sauce, sliced meat, and a fried egg.",
+    "description": "A bowl of warm rice topped with sautéed vegetables, gochujang chili paste, sliced meat, and a fried egg.",
     "imageUrl": "https://picsum.photos/seed/bibimbap/400/300",
     "spiceLevel": 3,
-    "funFact": "Bibimbap originated as a meal for farmers during harvest season, mixing leftovers into one bowl."
+    "funFact": "Originally a meal for farmers during harvest season, mixing leftovers into one bowl."
   },
   {
-    "id": "cuisine-11",
-    "name": "Feijoada",
-    "country": "Brazil",
-    "region": "Latin America",
-    "description": "A hearty black bean stew with pork, beef, and smoked sausages, traditionally served with rice, collard greens, and orange slices.",
-    "imageUrl": "https://picsum.photos/seed/feijoada/400/300",
-    "spiceLevel": 2,
-    "funFact": "Feijoada is traditionally served on Wednesdays and Saturdays in Brazil."
-  },
-  {
-    "id": "cuisine-12",
-    "name": "Moussaka",
-    "country": "Greece",
+    "id": "fd-10",
+    "name": "Espresso",
+    "country": "Italy",
     "region": "Europe",
-    "description": "Layered casserole of eggplant, minced meat, and creamy béchamel sauce, baked until golden and bubbly.",
-    "imageUrl": "https://picsum.photos/seed/moussaka/400/300",
+    "description": "A concentrated coffee brewed by forcing hot water through finely-ground beans under high pressure, served in a small demitasse cup.",
+    "imageUrl": "https://picsum.photos/seed/espresso/400/300",
+    "spiceLevel": 0,
+    "funFact": "The first espresso machine was invented in Turin in 1884 — patented as a 'steam beverage machine'."
+  },
+  {
+    "id": "fd-11",
+    "name": "Masala Chai",
+    "country": "India",
+    "region": "Asia",
+    "description": "Black tea simmered with milk, sugar, and a fragrant blend of spices including cardamom, cinnamon, ginger, and cloves.",
+    "imageUrl": "https://picsum.photos/seed/masalachai/400/300",
     "spiceLevel": 1,
-    "funFact": "The word 'moussaka' is derived from the Arabic 'musaqqa'a', meaning 'chilled'."
+    "funFact": "Chai wallahs (tea vendors) serve over 1 billion cups of chai daily across India."
+  },
+  {
+    "id": "fd-12",
+    "name": "Mojito",
+    "country": "Cuba",
+    "region": "Latin America",
+    "description": "A refreshing cocktail of white rum, fresh lime juice, mint leaves, sugar, and soda water, served over crushed ice.",
+    "imageUrl": "https://picsum.photos/seed/mojito/400/300",
+    "spiceLevel": 0,
+    "funFact": "Ernest Hemingway was a famous fan of the mojito at La Bodeguita del Medio bar in Havana."
+  },
+  {
+    "id": "fd-13",
+    "name": "Sake",
+    "country": "Japan",
+    "region": "Asia",
+    "description": "A traditional rice wine brewed through fermentation of polished rice, water, koji mold, and yeast — served warm or chilled.",
+    "imageUrl": "https://picsum.photos/seed/sake/400/300",
+    "spiceLevel": 0,
+    "funFact": "Sake brewing dates back over 2,000 years and is often called 'nihonshu' — the drink of the gods."
+  },
+  {
+    "id": "fd-14",
+    "name": "Moroccan Mint Tea",
+    "country": "Morocco",
+    "region": "Africa",
+    "description": "A sweet blend of Chinese green tea, fresh spearmint, and sugar, ceremonially poured from a height into small ornate glasses.",
+    "imageUrl": "https://picsum.photos/seed/moroccanminttea/400/300",
+    "spiceLevel": 0,
+    "funFact": "In Morocco, refusing a glass of mint tea is considered impolite — it's the essential gesture of hospitality."
   }
 ]
