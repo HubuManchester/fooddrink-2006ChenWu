@@ -1,15 +1,15 @@
 # World Cuisine Explorer (.NET MAUI)
 
-世界美食信息应用，适用于作业演示与视频录制。
+World Cuisine Information Application
 
-## 运行
+## Run
 
-> **注意**：必须在 `WorldCuisineApp` 目录内构建，或打开上级目录的 `WorldCuisine.sln`。  
+> **Note**: The project must be built within the `WorldCuisineApp` directory, or the `WorldCuisine.sln` file in the parent directory should be opened.  
 
-### 环境
+### Environment
 
 - .NET 9 SDK + MAUI workload
-- Visual Studio 2022（含「使用 .NET 的移动开发」工作负载）或 `dotnet workload install maui`
+- Visual Studio 2022(Including the "Mobile Development Using .NET" workload) or `dotnet workload install maui`
 
 ### Windows
 
@@ -19,11 +19,11 @@ dotnet build -f net9.0-windows10.0.19041.0
 dotnet run -f net9.0-windows10.0.19041.0
 ```
 
-或在 Visual Studio 中选择 **Windows Machine** 后 F5。
+Or, in Visual Studio, select **Windows Machine** and then press F5.
 
 ### Android
 
-连接设备或模拟器后：
+After connecting the device or simulator:
 
 ```powershell
 dotnet build -f net9.0-android
@@ -32,36 +32,43 @@ dotnet build -t:Run -f net9.0-android
 
 ## MockAPI
 
-1. 在 [mockapi.io](https://mockapi.io) 创建项目，添加资源 **`cuisines`**。
-2. 字段示例：`id`, `name`, `country`, `region`, `description`, `imageUrl`, `spiceLevel`, `funFact`（与 `Models/CuisineItem.cs` 一致）。
-3. 在应用 **Settings** 中粘贴完整 URL，例如：  
-   `https://xxxxxxxx.mockapi.io/cuisines`
-4. 未配置或网络失败时，自动使用 `Resources/Raw/cuisines_fallback.json`。
+1. Create a project on [mockapi.io](https://mockapi.io) and add the resource **`cuisines`** and **` user `**.
+2. Sample fields: **`cuisines`**: `id`, `name`, `country`, `region`, `description`, `imageUrl`, `spiceLevel`, `funFact`. **` user `**: `username`,`email`, `password`(consistent with `Models/CuisineItem.cs`).
+3. Paste the complete URL in the **Settings** of the application, for example: `https://6a1a6614bc2f944754922936.mockapi.io/:endpoint`
+4. When the configuration is not set or the network fails, automatically use `Resources/Raw/cuisines_fallback.json`. 
 
-## 演示得分点
+## Presentation Evaluation Points 
+| Standard | Demonstration Position | 
+|----------|------------------------|
+| Login Verification | Login & Register: Leave blank, incorrect email, short password |
+| Error Handling | Red error message in the status bar of any page; Local data is displayed even when API is disconnected |
+| Dark Mode / Font Size | Settings → Dark mode, Text size slider → Save |
+| Shaking | Shake the device on the Home page → Random dishes + vibration |
+| Vibration | On the Detail page ♥ Like |
+| TTS | On the Detail page **Read** |
+| Camera | Home **?** → 📷 or Detail 📷 |
+| Help Navigation | Home **?** → Help, **←** Back |
+| Data Source | Bottom status of Home: `Local fallback` or `MockAPI` | 
 
-| 标准 | 演示位置 |
-|------|----------|
-| 登录验证 | Login：留空、错误邮箱、短密码 |
-| 错误处理 | 任意页状态栏红色错误信息；API 断网仍显示本地数据 |
-| 暗色 / 字号 | Settings → Dark mode、Text size 滑块 → Save |
-| 摇晃 | Home 页摇动设备 → 随机菜品 + 震动 |
-| 震动 | 详情页 ♥ 收藏 |
-| TTS | 详情页 **Read** |
-| 摄像头 | Home **?** 旁 📷 或详情 📷 |
-| 帮助导航 | Home **?** → Help，**←** 返回 |
-| 数据来源 | Home 底部状态：`Local fallback` 或 `MockAPI` |
+## Git Commit Suggestions 
+1. **v1**: Project framework, login, home page list, local JSON fallback
+2. **v2**: MockAPI, favorites, details, hardware functionality enhancement
+3. **v3**: UI polishing, README, deployment screenshots and final fixes 
 
-## Git 提交建议
-
-1. **v1**：项目骨架、登录、首页列表、本地 JSON 兜底  
-2. **v2**：MockAPI、收藏、详情、硬件功能完善  
-3. **v3**：UI 打磨、README、部署截图与最终修复  
-
-## 项目结构
-
-- `Models/` — 数据模型  
-- `Services/` — API、设置、收藏、硬件封装  
-- `ViewModels/` — MVVM 视图模型  
-- `Views/` — XAML 页面  
-- `Constants/` — API 与偏好键  
+## Project Structure 
+- `Models/` — Data Models
+- `Services/` — APIs, settings, collections, hardware encapsulation
+- `Views/` — XAML Pages
+- `Constants/` — APIs and preference keys
+- `Models/` — Data Models (CuisineItem, User)
+- `Services/` — Business logic & data access (API, auth, favorites, hardware, settings)
+- `ViewModels/` — MVVM ViewModels with data binding & commands
+- `Views/` — XAML Pages (Login, Register, Home, Detail, Favorites, Settings, Camera, Help)
+- `Converters/` — XAML value converters (bool invert, string not empty)
+- `Constants/` — App-wide constants (default API URL, preference keys, shake thresholds)
+- `Resources/Styles/` — Color palette, control styles, custom app styles
+- `Resources/Raw/` — Offline fallback data (14 cuisines)
+- `Platforms/` — Platform-specific entry points & manifests (Android, Windows)
+- `AppShell.xaml` — Shell navigation (Login route + tab bar: Home/Favorites/Settings)
+- `MauiProgram.cs` — Dependency injection registration
+- `App.xaml` — Application root & resource dictionary merge
