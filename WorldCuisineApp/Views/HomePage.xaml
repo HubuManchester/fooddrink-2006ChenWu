@@ -66,28 +66,17 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type views:HomePage}}, Path=BindingContext.CuisineTappedCommand}"
                                     CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
-                            <Grid ColumnDefinitions="72,*" ColumnSpacing="12">
-                                <Image Grid.Column="0"
-                                       Source="{Binding ImageUrl}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="72"
-                                       WidthRequest="72">
-                                    <Image.Clip>
-                                        <RoundRectangleGeometry CornerRadius="8" Rect="0,0,72,72" />
-                                    </Image.Clip>
-                                </Image>
-                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                                    <Label Text="{Binding Name}"
-                                           FontAttributes="Bold"
-                                           FontSize="{StaticResource TitleFontSize}" />
-                                    <Label Text="{Binding Country}"
-                                           FontSize="{StaticResource BodyFontSize}"
-                                           TextColor="{StaticResource TextMuted}" />
-                                    <Label Text="{Binding Region}"
-                                           FontSize="{StaticResource SmallFontSize}"
-                                           TextColor="{StaticResource Accent}" />
-                                </VerticalStackLayout>
-                            </Grid>
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="{StaticResource TitleFontSize}" />
+                                <Label Text="{Binding Country}"
+                                       FontSize="{StaticResource BodyFontSize}"
+                                       TextColor="{StaticResource TextMuted}" />
+                                <Label Text="{Binding Region}"
+                                       FontSize="{StaticResource SmallFontSize}"
+                                       TextColor="{StaticResource Accent}" />
+                            </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace FoodDrinkApp;
+namespace WorldCuisineApp;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

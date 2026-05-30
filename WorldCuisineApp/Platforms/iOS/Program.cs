@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace FoodDrinkApp;
+namespace WorldCuisineApp;
 
 public class Program
 {

@@ -1,5 +1,4 @@
-﻿using FoodDrinkApp;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using WorldCuisineApp.Services;
 using WorldCuisineApp.ViewModels;
 using WorldCuisineApp.Views;
@@ -24,8 +23,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<IHardwareService, HardwareService>();
         builder.Services.AddSingleton<HttpClient>();
         builder.Services.AddSingleton<ICuisineService, CuisineService>();
+        builder.Services.AddSingleton<IUserService, UserService>();
 
         builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<RegisterViewModel>();
         builder.Services.AddTransient<HomeViewModel>();
         builder.Services.AddTransient<CuisineDetailViewModel>();
         builder.Services.AddTransient<FavoritesViewModel>();
@@ -34,6 +35,7 @@ public static class MauiProgram
         builder.Services.AddTransient<HelpViewModel>();
 
         builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddTransient<RegisterPage>();
         builder.Services.AddTransient<HomePage>();
         builder.Services.AddTransient<CuisineDetailPage>();
         builder.Services.AddTransient<FavoritesPage>();

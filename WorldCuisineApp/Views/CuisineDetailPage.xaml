@@ -26,14 +26,6 @@
                        VerticalOptions="Center" />
             </Grid>
 
-            <Image Source="{Binding Cuisine.ImageUrl}"
-                   Aspect="AspectFill"
-                   HeightRequest="220">
-                <Image.Clip>
-                    <RoundRectangleGeometry CornerRadius="12" Rect="0,0,400,220" />
-                </Image.Clip>
-            </Image>
-
             <Label Text="{Binding Cuisine.Country, StringFormat='{0}'}"
                    FontSize="{StaticResource TitleFontSize}"
                    TextColor="{StaticResource Accent}" />

@@ -17,6 +17,7 @@ public static class AppConstants
     public const string PrefDarkMode = "dark_mode";
     public const string PrefFontScale = "font_scale";
     public const string PrefFavorites = "favorite_cuisine_ids";
+    public const string PrefLocalUsers = "local_users";
 
     public const double ShakeThreshold = 1.85;
     public const int ShakeCooldownMs = 1500;

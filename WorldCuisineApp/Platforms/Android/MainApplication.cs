@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace FoodDrinkApp;
+namespace WorldCuisineApp;
 
 [Application]
 public class MainApplication : MauiApplication

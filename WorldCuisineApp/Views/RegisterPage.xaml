@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:WorldCuisineApp.ViewModels"
              xmlns:conv="clr-namespace:WorldCuisineApp.Converters"
-             x:Class="WorldCuisineApp.Views.LoginPage"
-             x:DataType="vm:LoginViewModel"
+             x:Class="WorldCuisineApp.Views.RegisterPage"
+             x:DataType="vm:RegisterViewModel"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}">
 
@@ -16,11 +16,11 @@
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center">
 
-            <Label Text="🍽️" FontSize="48" HorizontalOptions="Center" />
-            <Label Text="World Cuisine Explorer"
+            <Label Text="📝" FontSize="48" HorizontalOptions="Center" />
+            <Label Text="Create Account"
                    Style="{StaticResource Headline}"
                    HorizontalTextAlignment="Center" />
-            <Label Text="Sign in to explore global dishes"
+            <Label Text="Register to save your favorites and settings"
                    Style="{StaticResource SubHeadline}"
                    HorizontalTextAlignment="Center"
                    TextColor="{StaticResource TextMuted}" />
@@ -44,8 +44,15 @@
                     <Entry Text="{Binding Password}"
                            Placeholder="Min. 6 characters"
                            IsPassword="True"
-                           ReturnType="Done"
+                           ReturnType="Next"
                            SemanticProperties.Description="Password" />
+
+                    <Label Text="Confirm password" Style="{StaticResource FieldLabel}" />
+                    <Entry Text="{Binding ConfirmPassword}"
+                           Placeholder="Re-enter password"
+                           IsPassword="True"
+                           ReturnType="Done"
+                           SemanticProperties.Description="Confirm password" />
 
                     <Label Text="{Binding ErrorMessage}"
                            TextColor="{StaticResource Error}"
@@ -56,8 +63,8 @@
                            TextColor="{StaticResource Success}"
                            IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmpty}}" />
 
-                    <Button Text="Sign In"
-                            Command="{Binding LoginCommand}"
+                    <Button Text="Register"
+                            Command="{Binding RegisterCommand}"
                             IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBool}}"
                             Style="{StaticResource PrimaryButton}" />
 
@@ -65,14 +72,14 @@
                 </VerticalStackLayout>
             </Border>
 
-            <Button Text="Don't have an account? Register"
-                    Command="{Binding GoToRegisterCommand}"
+            <Button Text="Already have an account? Sign In"
+                    Command="{Binding GoToLoginCommand}"
                     BackgroundColor="Transparent"
                     TextColor="{StaticResource Accent}"
                     FontSize="{StaticResource BodyFontSize}" />
 
-            <Label Text="Demo: leave fields empty or use short password to show validation."
-                   FontSize="{StaticResource BodyFontSize}"
+            <Label Text="Data is saved to MockAPI when online, or locally when offline."
+                   FontSize="{StaticResource SmallFontSize}"
                    TextColor="{StaticResource TextMuted}"
                    HorizontalTextAlignment="Center" />
         </VerticalStackLayout>

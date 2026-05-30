@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cuisine-1",
+    "name": "Margherita Pizza",
+    "country": "Italy",
+    "region": "Europe",
+    "description": "A classic Neapolitan pizza topped with San Marzano tomatoes, fresh mozzarella, basil, and olive oil on a thin crust.",
+    "imageUrl": "https://picsum.photos/seed/pizza/400/300",
+    "spiceLevel": 0,
+    "funFact": "Named after Queen Margherita of Savoy who visited Naples in 1889."
+  },
+  {
+    "id": "cuisine-2",
+    "name": "Pad Thai",
+    "country": "Thailand",
+    "region": "Asia",
+    "description": "Stir-fried rice noodles with shrimp, tofu, eggs, bean sprouts, and tamarind sauce, topped with crushed peanuts and lime.",
+    "imageUrl": "https://picsum.photos/seed/padthai/400/300",
+    "spiceLevel": 2,
+    "funFact": "Pad Thai was promoted as a national dish during WWII when rice was scarce and noodles were encouraged."
+  },
+  {
+    "id": "cuisine-3",
+    "name": "Tacos al Pastor",
+    "country": "Mexico",
+    "region": "Latin America",
+    "description": "Marinated pork cooked on a vertical spit, served on corn tortillas with pineapple, onion, cilantro, and salsa.",
+    "imageUrl": "https://picsum.photos/seed/tacos/400/300",
+    "spiceLevel": 3,
+    "funFact": "Al Pastor was introduced by Lebanese immigrants to Mexico in the early 1900s, inspired by shawarma."
+  },
+  {
+    "id": "cuisine-4",
+    "name": "Sushi",
+    "country": "Japan",
+    "region": "Asia",
+    "description": "Vinegared rice paired with fresh raw fish, seafood, and vegetables, often wrapped in nori seaweed.",
+    "imageUrl": "https://picsum.photos/seed/sushi/400/300",
+    "spiceLevel": 2,
+    "funFact": "Sushi originally began as a method of preserving fish in fermented rice during the 2nd century."
+  },
+  {
+    "id": "cuisine-5",
+    "name": "Butter Chicken",
+    "country": "India",
+    "region": "Asia",
+    "description": "Tender chicken pieces in a rich, creamy tomato-based curry with butter, cream, and aromatic spices.",
+    "imageUrl": "https://picsum.photos/seed/butterchicken/400/300",
+    "spiceLevel": 3,
+    "funFact": "Butter chicken was invented by accident at Moti Mahal restaurant in Delhi in the 1950s."
+  },
+  {
+    "id": "cuisine-6",
+    "name": "Croissant",
+    "country": "France",
+    "region": "Europe",
+    "description": "A buttery, flaky, crescent-shaped pastry made from laminated yeast-leavened dough.",
+    "imageUrl": "https://picsum.photos/seed/croissant/400/300",
+    "spiceLevel": 0,
+    "funFact": "The croissant actually originated from the Austrian kipferl and was brought to France by Marie Antoinette."
+  },
+  {
+    "id": "cuisine-7",
+    "name": "Paella",
+    "country": "Spain",
+    "region": "Europe",
+    "description": "Saffron-infused rice dish with seafood, chicken, rabbit, green beans, and bell peppers, cooked in a wide shallow pan.",
+    "imageUrl": "https://picsum.photos/seed/paella/400/300",
+    "spiceLevel": 1,
+    "funFact": "Authentic paella is traditionally cooked over an open fire with orange and pine branches for smoky flavor."
+  },
+  {
+    "id": "cuisine-8",
+    "name": "Peking Duck",
+    "country": "China",
+    "region": "Asia",
+    "description": "Roasted duck with crispy skin, served with thin pancakes, spring onions, cucumber, and sweet hoisin sauce.",
+    "imageUrl": "https://picsum.photos/seed/pekingduck/400/300",
+    "spiceLevel": 1,
+    "funFact": "Peking duck has been a royal dish since the Yuan Dynasty (1271-1368)."
+  },
+  {
+    "id": "cuisine-9",
+    "name": "Shawarma",
+    "country": "Lebanon",
+    "region": "Middle East",
+    "description": "Seasoned meat slow-roasted on a vertical spit, thinly sliced and served in pita with tahini, pickles, and vegetables.",
+    "imageUrl": "https://picsum.photos/seed/shawarma/400/300",
+    "spiceLevel": 2,
+    "funFact": "The word 'shawarma' comes from the Turkish word 'çevirme', meaning 'turning'."
+  },
+  {
+    "id": "cuisine-10",
+    "name": "Bibimbap",
+    "country": "South Korea",
+    "region": "Asia",
+    "description": "A bowl of warm rice topped with sautéed vegetables, gochujang chili paste, soy sauce, sliced meat, and a fried egg.",
+    "imageUrl": "https://picsum.photos/seed/bibimbap/400/300",
+    "spiceLevel": 3,
+    "funFact": "Bibimbap originated as a meal for farmers during harvest season, mixing leftovers into one bowl."
+  },
+  {
+    "id": "cuisine-11",
+    "name": "Feijoada",
+    "country": "Brazil",
+    "region": "Latin America",
+    "description": "A hearty black bean stew with pork, beef, and smoked sausages, traditionally served with rice, collard greens, and orange slices.",
+    "imageUrl": "https://picsum.photos/seed/feijoada/400/300",
+    "spiceLevel": 2,
+    "funFact": "Feijoada is traditionally served on Wednesdays and Saturdays in Brazil."
+  },
+  {
+    "id": "cuisine-12",
+    "name": "Moussaka",
+    "country": "Greece",
+    "region": "Europe",
+    "description": "Layered casserole of eggplant, minced meat, and creamy béchamel sauce, baked until golden and bubbly.",
+    "imageUrl": "https://picsum.photos/seed/moussaka/400/300",
+    "spiceLevel": 1,
+    "funFact": "The word 'moussaka' is derived from the Arabic 'musaqqa'a', meaning 'chilled'."
+  }
+]

@@ -23,7 +23,7 @@ public class CuisineService : ICuisineService
     {
         _httpClient = httpClient;
         _settings = settings;
-        _httpClient.Timeout = TimeSpan.FromSeconds(12);
+        _httpClient.Timeout = TimeSpan.FromSeconds(3);
     }
 
     public string LastDataSource { get; private set; } = "Unknown";

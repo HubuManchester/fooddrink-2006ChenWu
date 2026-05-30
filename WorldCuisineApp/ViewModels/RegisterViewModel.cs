@@ -1,24 +1,22 @@
 using System.Windows.Input;
 using WorldCuisineApp.Services;
-using WorldCuisineApp.Views;
 
 namespace WorldCuisineApp.ViewModels;
 
-public class LoginViewModel : BaseViewModel
+public class RegisterViewModel : BaseViewModel
 {
-    private readonly ISettingsService _settings;
     private readonly IUserService _userService;
     private string _username = string.Empty;
     private string _email = string.Empty;
     private string _password = string.Empty;
+    private string _confirmPassword = string.Empty;
 
-    public LoginViewModel(ISettingsService settings, IUserService userService)
+    public RegisterViewModel(IUserService userService)
     {
-        _settings = settings;
         _userService = userService;
-        Title = "Sign In";
-        LoginCommand = new Command(async () => await LoginAsync(), () => !IsBusy);
-        GoToRegisterCommand = new Command(async () => await Shell.Current.GoToAsync(nameof(RegisterPage)));
+        Title = "Create Account";
+        RegisterCommand = new Command(async () => await RegisterAsync(), () => !IsBusy);
+        GoToLoginCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
     }
 
     public string Username
@@ -39,10 +37,16 @@ public class LoginViewModel : BaseViewModel
         set => SetProperty(ref _password, value);
     }
 
-    public ICommand LoginCommand { get; }
-    public ICommand GoToRegisterCommand { get; }
+    public string ConfirmPassword
+    {
+        get => _confirmPassword;
+        set => SetProperty(ref _confirmPassword, value);
+    }
 
-    public async Task LoginAsync()
+    public ICommand RegisterCommand { get; }
+    public ICommand GoToLoginCommand { get; }
+
+    private async Task RegisterAsync()
     {
         ClearMessages();
 
@@ -66,7 +70,7 @@ public class LoginViewModel : BaseViewModel
 
         if (string.IsNullOrWhiteSpace(Password))
         {
-            ErrorMessage = "Please enter your password.";
+            ErrorMessage = "Please enter a password.";
             return;
         }
 
@@ -76,20 +80,24 @@ public class LoginViewModel : BaseViewModel
             return;
         }
 
+        if (Password != ConfirmPassword)
+        {
+            ErrorMessage = "Passwords do not match.";
+            return;
+        }
+
         try
         {
             IsBusy = true;
-            await Task.Delay(200);
-
-            var (success, error) = await _userService.LoginAsync(Email.Trim(), Password);
+            var (success, error) = await _userService.RegisterAsync(Username.Trim(), Email.Trim(), Password);
 
             if (success)
             {
-                _settings.Username = Username.Trim();
-                _settings.IsLoggedIn = true;
-                StatusMessage = $"Welcome, {_settings.Username}! ({_userService.LastDataSource})";
-
-                await Shell.Current.GoToAsync("//home");
+                StatusMessage = $"Account created ({_userService.LastDataSource}). You can now sign in.";
+                Username = string.Empty;
+                Email = string.Empty;
+                Password = string.Empty;
+                ConfirmPassword = string.Empty;
             }
             else
             {
@@ -98,7 +106,7 @@ public class LoginViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            ErrorMessage = $"Login failed: {ex.Message}";
+            ErrorMessage = $"Registration failed: {ex.Message}";
         }
         finally
         {

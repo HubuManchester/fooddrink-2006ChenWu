@@ -15,6 +15,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(CuisineDetailPage), typeof(CuisineDetailPage));
         Routing.RegisterRoute(nameof(HelpPage), typeof(HelpPage));
         Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
+        Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
 
         Loaded += OnShellLoaded;
     }

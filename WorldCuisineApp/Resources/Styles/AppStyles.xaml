@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Application color palette (warm food theme) -->
+    <Color x:Key="Accent">#D9472B</Color>
+    <Color x:Key="AccentDark">#FFB15D</Color>
+    <Color x:Key="Error">#D32F2F</Color>
+    <Color x:Key="Success">#2E7D32</Color>
+    <Color x:Key="TextMuted">#9A7B63</Color>
+    <Color x:Key="TextMutedDark">#BFA58E</Color>
+    <Color x:Key="PageBackground">#FFF9EF</Color>
+    <Color x:Key="PageBackgroundDark">#120E0B</Color>
+    <Color x:Key="CardBackground">#FFFFFF</Color>
+    <Color x:Key="CardBackgroundDark">#1E1814</Color>
+
+    <!-- Dynamic font sizes (overridden at runtime by SettingsService) -->
+    <x:Double x:Key="BodyFontSize">16</x:Double>
+    <x:Double x:Key="TitleFontSize">22</x:Double>
+    <x:Double x:Key="SmallFontSize">12</x:Double>
+
+    <!-- Named styles used across pages -->
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16,11" />
+        <Setter Property="MinimumHeightRequest" Value="44" />
+    </Style>
+
+    <Style x:Key="SecondaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource Accent}" />
+        <Setter Property="BorderColor" Value="{StaticResource Accent}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16,11" />
+        <Setter Property="MinimumHeightRequest" Value="44" />
+    </Style>
+
+    <Style x:Key="IconButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HeightRequest" Value="44" />
+        <Setter Property="WidthRequest" Value="44" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style x:Key="CardBorder" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="{AppThemeBinding Light=#40000000, Dark=#00000000}"
+                        Offset="0,2"
+                        Radius="4"
+                        Opacity="0.15" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FieldLabel" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextMuted}, Dark={StaticResource TextMutedDark}}" />
+    </Style>
+
+</ResourceDictionary>
