@@ -5,7 +5,6 @@
 ## 运行
 
 > **注意**：必须在 `WorldCuisineApp` 目录内构建，或打开上级目录的 `WorldCuisine.sln`。  
-> 不要在 `E:\STandQA\1` 使用已删除的 `1.csproj` 构建。
 
 ### 环境
 
